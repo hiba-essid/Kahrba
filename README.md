@@ -12,7 +12,7 @@ A complete autonomous robot car system with real-time traffic sign recognition u
 
 This project implements end-to-end machine learning for autonomous vehicle control based on traffic sign recognition.
 
-Features:
+**Features:**
 - Training pipeline with TensorFlow
 - Multiple model formats (float32, int8, quantized)
 - Real-time TFLite inference on Raspberry Pi 3
@@ -49,14 +49,14 @@ python main.py --model deployment_solutions/traffic_sign_model_pi3_minimalv2.tfl
 | int8 | 50-80ms | 3-4MB | 96.8% |
 | pi3_minimalv2 | 40-60ms | 2-3MB | 95.5% |
 
-## Supported Signs
+## Supported Traffic Signs
 
 - Stop signs 🛑
 - Speed limits (100 km/h, 90 km/h, 70 km/h, etc.)
 - Yield signs
 - No entry signs
 - One way signs
-- And more...
+- And more (see \class_names.txt\)
 
 ## Project Structure
 
@@ -84,16 +84,36 @@ python3 main.py --model deployment_solutions/traffic_sign_model_pi3_minimalv2.tf
 
 ## Development
 
-Train a new model:
+**Train a new model:**
 \\\ash
 jupyter notebook Traffic_Sign_Recognition_Training.ipynb
 \\\
 
-Analyze performance:
+**Analyze performance:**
 \\\ash
 python deployment_solutions/analyze_model_curves.py
 python deployment_solutions/generate_training_curves.py
 \\\
+
+## Troubleshooting
+
+### Model Not Loading
+- Verify model path is correct
+- Check TFLite runtime is installed: \pip3 install tflite-runtime\
+- Ensure model file is not corrupted
+
+### Low Accuracy
+- Ensure adequate lighting (>200 lux)
+- Check camera is properly focused
+- Try lowering confidence threshold
+
+### Slow Inference
+- Use quantized (int8) or pi3_minimalv2 model
+- Reduce background processes on Pi
+
+### Camera Not Working
+- Enable Pi camera in \aspi-config\
+- Check camera is not used by another process
 
 ## Contributing
 
@@ -106,6 +126,12 @@ MIT License
 ## Author
 
 **Hiba Essid** - [GitHub](https://github.com/hiba-essid)
+
+## References
+
+- [TensorFlow Lite Documentation](https://www.tensorflow.org/lite)
+- [Raspberry Pi Guide](https://www.raspberrypi.org/documentation/)
+- [OpenCV Documentation](https://docs.opencv.org/)
 
 ---
 
