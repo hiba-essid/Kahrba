@@ -29,17 +29,17 @@ This project implements end-to-end machine learning for autonomous vehicle contr
 
 ## Installation
 
-\\\ash
+```bash
 git clone https://github.com/hiba-essid/Kahrba.git
 cd Kahrba
 pip install tensorflow opencv-python numpy
-\\\
+```
 
 ## Quick Start
 
-\\\ash
+```bash
 python main.py --model deployment_solutions/traffic_sign_model_pi3_minimalv2.tflite
-\\\
+```
 
 ## Models Included
 
@@ -56,11 +56,11 @@ python main.py --model deployment_solutions/traffic_sign_model_pi3_minimalv2.tfl
 - Yield signs
 - No entry signs
 - One way signs
-- And more (see \class_names.txt\)
+- And more (see `class_names.txt`)
 
 ## Project Structure
 
-\\\
+```
 Kahrba/
 ├── README.md
 ├── main.py
@@ -71,35 +71,35 @@ Kahrba/
     ├── best_model.keras
     ├── class_names.txt
     └── [analysis utilities]
-\\\
+```
 
 ## Deploy on Raspberry Pi
 
-\\\ash
+```bash
 ssh pi@<your-pi-ip>
 pip3 install tflite-runtime opencv-python numpy
 scp -r Kahrba/ pi@<your-pi-ip>:/home/pi/
 python3 main.py --model deployment_solutions/traffic_sign_model_pi3_minimalv2.tflite
-\\\
+```
 
 ## Development
 
 **Train a new model:**
-\\\ash
+```bash
 jupyter notebook Traffic_Sign_Recognition_Training.ipynb
-\\\
+```
 
 **Analyze performance:**
-\\\ash
+```bash
 python deployment_solutions/analyze_model_curves.py
 python deployment_solutions/generate_training_curves.py
-\\\
+```
 
 ## Troubleshooting
 
 ### Model Not Loading
 - Verify model path is correct
-- Check TFLite runtime is installed: \pip3 install tflite-runtime\
+- Check TFLite runtime is installed: `pip3 install tflite-runtime`
 - Ensure model file is not corrupted
 
 ### Low Accuracy
@@ -112,7 +112,7 @@ python deployment_solutions/generate_training_curves.py
 - Reduce background processes on Pi
 
 ### Camera Not Working
-- Enable Pi camera in \aspi-config\
+- Enable Pi camera in `raspi-config`
 - Check camera is not used by another process
 
 ## Contributing
